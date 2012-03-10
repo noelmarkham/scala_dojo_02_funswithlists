@@ -25,7 +25,6 @@ class FunsWithListsTests extends FunSuite with ShouldMatchers{
   /* 1 BONUS POINT : complete this using only higher order functions */
   test("should return the average rating of games belonging to Zenga"){
     averageRatingsOf ("Zenga", games) should equal (35)
-    fail()
   }
 
   /* 1 BONUS POINT : complete this using recursion */
@@ -71,5 +70,5 @@ class FunsWithListsTests extends FunSuite with ShouldMatchers{
   }
 
   */
-  
+
 }

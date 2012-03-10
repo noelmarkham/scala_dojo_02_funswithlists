@@ -7,8 +7,13 @@ object FunsWithLists {
   def labels(ls: List[Game]) = ls map (x => x.label)
 
   def averageRatingsOf(l:String,  ls:List[Game]) = {
-    val filteredList: List[Game] = ls filter (x => x.label == l)
-    (filteredList.foldLeft(0)((m: Int, n: Game) => m + n.rating)) / filteredList.size
+
+    def functionOverListSum(f: Int => Int, sum: Int, l:List[Game]): Int = {
+      if (l == Nil) f(sum) else functionOverListSum(f, sum + l.head.rating, l.tail)
+    }
+
+    val filteredList = ls filter (x => x.label == l)
+    functionOverListSum(x => x / filteredList.size, 0, filteredList)
   }
 
   def totalRatingsOf(ls: List[Game]): Int = ls match {
