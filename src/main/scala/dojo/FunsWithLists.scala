@@ -8,8 +8,9 @@ object FunsWithLists {
 
   def averageRatingsOf(l:String,  ls:List[Game]) = {
 
-    def functionOverListSum(f: Int => Int, sum: Int, l:List[Game]): Int = {
-      if (l == Nil) f(sum) else functionOverListSum(f, sum + l.head.rating, l.tail)
+    def functionOverListSum(f: Int => Int, sum: Int, l:List[Game]): Int = l match {
+      case Nil => f(sum)
+      case x :: xs => functionOverListSum(f, sum + x.rating, xs)
     }
 
     val filteredList = ls filter (x => x.label == l)
