@@ -44,4 +44,13 @@ object FunsWithLists {
 
   def zipWithKey = (f: (Game) => String, ls: List[Game]) => labels(ls) map (x => x.toUpperCase) zip ls
 
+  def firstGameWithRating(rating: Int):(List[Game] => Game) = {
+    def func(list: List[Game]): Game = list match {
+      case Nil => null
+      case x :: xs if (x.rating == rating) => x
+      case x :: xs => func(xs)
+    }
+
+    func
+  }
 }
